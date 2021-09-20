@@ -1,47 +1,46 @@
 <template>
-    <h1>chart {{ text }}</h1>
     <div id="chart">
-        <apexchart type="line" height="550" width="950" :options="chartOptions" :series="series">a</apexchart>
+        <apexchart type="line" height="550" width="950" :options="chartOptions" :series="series"></apexchart>
     </div>
 </template>
 
 <script>
+const myColor = ['#ff3838', '#3ae374', '#273c75', '#ff9f1a', '#fff200', '#0abde3', '#f78fb3', '#d1ccc0'];
 export default {
     name: 'Chart',
     data() {
         return {
-            text: 'azzzz',
             series: [
                 {
-                    name: 'Val1',
+                    name: '',
                     data: [0, 11, 40, 40, 40, 40],
                 },
                 {
-                    name: 'Val2',
+                    name: '',
                     data: [40, 40, 40, 40, 40, 40],
                 },
                 {
-                    name: 'Val3',
+                    name: '',
                     data: [0, 0, 0, 12, 24, 37],
                 },
                 {
-                    name: 'Val4',
+                    name: '',
                     data: [10, 10, 25, 40, 55, 70],
                 },
                 {
-                    name: 'Val5',
+                    name: '',
                     data: [0, 80, 80, 80, 80, 80],
                 },
                 {
-                    name: 'Val6',
+                    name: '',
                     data: [95, 75, 75, 75, 75, 75],
                 },
                 {
-                    name: 'Val7',
+                    name: '',
                     data: [0, 0, 0, 0, 0, 0],
                 },
                 {
-                    name: 'Val80',
+                    name: '',
                     data: [0, 0, 0, 0, 0, 0],
                 },
             ],
@@ -52,23 +51,23 @@ export default {
                         enabled: false,
                     },
                 },
-                dataLabels: {
-                    enabled: false,
-                    // formatter: function(val, opt) {
-                    //     return opt.w.globals.labels[opt.dataPointIndex];
-                    // },
-                },
-                colors: ['#ff3838', '#3ae374', '#273c75', '#ff9f1a', '#fff200', '#0abde3', '#f78fb3', '#d1ccc0'],
+                // dataLabels: {
+                //     enabled: false,
+                // },
+                colors: myColor,
                 stroke: {
                     curve: 'straight',
                 },
                 title: {
-                    text: 'Product Trends by Month',
+                    text: '',
                     align: 'center',
                 },
                 grid: {
+                    row: {
+                        colors: ['#00000'],
+                    },
                     column: {
-                        colors: ['#0D3182'], // takes an array which will be repeated on columns
+                        colors: ['#00000'],
                     },
                     yaxis: {
                         lines: {
@@ -77,14 +76,15 @@ export default {
                     },
                 },
                 xaxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
                     title: {
-                        text: 'Month',
+                        text: '',
                     },
                 },
                 yaxis: {
+                    color: '#63C7A4',
+                    show: true,
                     title: {
-                        text: 'Percentage',
+                        text: '',
                     },
                     min: 0,
                     max: 100,
@@ -92,38 +92,21 @@ export default {
                 legend: {
                     show: true,
                     fontSize: '16px',
-                    //align: 'center',
                     horizontalAlign: 'right',
                     position: 'right',
-                    floating: false,
                     offsetX: 1,
                     offsetY: 18,
-                    // order legend
                     inverseOrder: false,
                     markers: {
                         width: 100,
                         height: 29,
                         strokeWidth: 5,
-                        //strokeColor: '#FFFF',
-                        fillColors: [
-                            '#ff3838',
-                            '#3ae374',
-                            '#273c75',
-                            '#ff9f1a',
-                            '#fff200',
-                            '#0abde3',
-                            '#f78fb3',
-                            '#d1ccc0',
-                        ],
+                        fillColors: myColor,
                         radius: 2,
-                        // customHTML: function() {
-                        //     return '<p>hello</p>';
-                        // },
                         offsetX: 0,
                         offsetY: 3,
                     },
                     itemMargin: {
-                        //  horizontal: 5,
                         vertical: 10,
                     },
                 },
@@ -132,6 +115,9 @@ export default {
                 },
             },
         };
+    },
+    mounted() {
+        this.$forceUpdate();
     },
 };
 </script>
